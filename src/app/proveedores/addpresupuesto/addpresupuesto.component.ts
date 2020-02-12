@@ -25,8 +25,8 @@ export class AddpresupuestoComponent implements OnInit {
       concepto: ['', [Validators.required, Validators.minLength(10)]],
       base: ['', Validators.required],
       tipo: ['', Validators.required],
-      iva: [this.iva],
-      total: [this.total],
+      iva: this.iva,
+      total: this.total,
     });
     this.onChanges();
   }

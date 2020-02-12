@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
     <h2>Añadir presupuesto</h2>
-    <form [formGroup]="presupuestoForm">
+    <form [formGroup]="presupuestoForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="proveedor">Proveedor</label>
         <i *ngIf="presupuestoForm.controls.proveedor.valid" class="fa fa-check-circle check"></i>
@@ -45,19 +45,19 @@
       </div>
       <div class="form-group">
         <label for="iva">Impuesto IVA</label>
-        <input type="number" class="form-control" name="iva" id="iva" formControlName="iva" [(ngModel)]="presupuestoForm.value.iva" disabled />
+        <input type="number" class="form-control" name="iva" id="iva" formControlName="iva" [(ngModel)]="presupuestoForm.value.iva" />
       </div>
       <div class="form-group">
         <label for="total">Total Factura IVA Incluido</label>
         <input type="text" class="form-control" name="total" id="total" formControlName="total" [(ngModel)]="presupuestoForm.value.total" disabled />
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary" [disabled]="!presupuestoForm.valid">Añadir presupuesto</button>
-        <p *ngIf="!presupuestoForm.valid" class="alert alert-danger">Por favor complete todos los campos</p>
-      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!presupuestoForm.valid">Añadir presupuesto</button>
+      <p *ngIf="!presupuestoForm.valid" class="alert alert-danger">Por favor complete todos los campos</p>
     </form>
     <hr />
     <pre>{{ presupuestoForm.value | json }}</pre>
     <pre>{{ presupuestoForm.status | json }}</pre>
+    <hr />
+    <pre>{{ presupuesto | json }}</pre>
   </div>
 </div>
