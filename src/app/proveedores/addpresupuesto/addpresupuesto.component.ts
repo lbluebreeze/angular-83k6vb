@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PresupuestosService } from '../../servicios/presupuestos.service';
 
 @Component({
   selector: 'app-addpresupuesto',
@@ -10,23 +11,31 @@ export class AddpresupuestoComponent implements OnInit {
 
   presupuestoForm: FormGroup;
   presupuesto: any;
+  base: any;
+  tipo: any;
+  iva: any = 0;
+  total: any = 0;
 
-  constructor(private pf: FormBuilder) { }
+  constructor(private pf: FormBuilder, private presupuestosService: PresupuestosService) { }
 
   ngOnInit() {
     this.presupuestoForm = this.pf.group({
       proveedor: ['', Validators.required],
       fecha: ['', Validators.required],
-      concepto: ['', Validators.required],
+      concepto: ['', [Validators.required, Validators.minLength(10)]],
       base: ['', Validators.required],
       tipo: ['', Validators.required],
-      iva: ['', Validators.required],
-      total: ['', Validators.required],
+      iva: [this.iva],
+      total: [this.total],
     });
+    this.onChanges();
   }
 
   onSubmit() {
     this.presupuesto = this.savePresupuesto();
+    this.presupuestosService.postPresupuesto(this.presupuesto).subscribe(newpresupuesto => {
+      
+    });
   }
 
   savePresupuesto() {
@@ -40,6 +49,16 @@ export class AddpresupuestoComponent implements OnInit {
       total: this.presupuestoForm.get('total').value,
     }
     return savePresupuesto;
+  }
+
+  onChanges(): void {
+    this.presupuestoForm.valueChanges.subscribe(valor => {
+      this.base = valor.base;
+      this.tipo = valor.tipo;
+      let iva = this.base * this.tipo;
+      this.presupuestoForm.value.iva = iva;
+      this.presupuestoForm.value.total = this.base + iva;
+    });
   }
 
 }
