@@ -36,6 +36,7 @@ export class AddpresupuestoComponent implements OnInit {
     this.presupuestosService.postPresupuesto(this.presupuesto).subscribe(newpresupuesto => {
       
     });
+    this.presupuestoForm.reset();
   }
 
   savePresupuesto() {

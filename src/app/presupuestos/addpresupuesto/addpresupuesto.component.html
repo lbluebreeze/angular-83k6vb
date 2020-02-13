@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
     <h2>Añadir presupuesto</h2>
+    <a class="btn btn-primary float-right" style="margin-bottom: 1em;" routerLink="/presupuestos">Regresar al listado</a>
     <form [formGroup]="presupuestoForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="proveedor">Proveedor</label>
@@ -51,13 +52,9 @@
         <label for="total">Total Factura IVA Incluido</label>
         <input type="text" class="form-control" name="total" id="total" formControlName="total" [(ngModel)]="presupuestoForm.value.total" disabled />
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!presupuestoForm.valid">Añadir presupuesto</button>
+      <button type="submit" class="btn btn-primary" style="margin-bottom: 1em" [disabled]="!presupuestoForm.valid">Añadir presupuesto</button>
+      <a class="btn btn-danger" style="margin: 0 0 1em 1em;" routerLink="/presupuestos">Cancelar</a>
       <p *ngIf="!presupuestoForm.valid" class="alert alert-danger">Por favor complete todos los campos</p>
     </form>
-    <hr />
-    <pre>{{ presupuestoForm.value | json }}</pre>
-    <pre>{{ presupuestoForm.status | json }}</pre>
-    <hr />
-    <pre>{{ presupuesto | json }}</pre>
   </div>
 </div>
