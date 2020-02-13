@@ -14,18 +14,20 @@ import { HeaderComponent } from './header/header.component';
 import { ProveedoresComponent } from "./proveedores/proveedores.component";
 import { AddproveedorComponent } from './proveedores/addproveedor/addproveedor.component';
 import { AddpresupuestoComponent } from './proveedores/addpresupuesto/addpresupuesto.component';
+import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.component';
 
 const routes: Routes = [
   { path: "", component: InicioComponent },
   { path: "proveedores", component: ProveedoresComponent },
   { path: "addproveedor", component: AddproveedorComponent },
   { path: "addpresupuesto", component: AddpresupuestoComponent },
+  { path: "presupuestos", component: PresupuestosComponent },
   { path: "**", component: InicioComponent },
 ];
 
 @NgModule({
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpModule],
-  declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent],
+  declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent, PresupuestosComponent],
   bootstrap: [AppComponent],
   providers: [ProveedoresService, PresupuestosService]
 })

@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class PresupuestosService {
 
-  presupuestosUrl = "https://angular-daisy.firebaseio.com/";
+  presupuestosUrl = "https://angular-daisy.firebaseio.com/.json";
 
   constructor(private http: Http) { }
 
@@ -19,6 +19,10 @@ export class PresupuestosService {
       console.log(response.json());
       return response.json();
     });
+  }
+
+  getPresupuestos() {
+    return this.http.get(this.presupuestosUrl).map(response => response.json());
   }
 
 }
