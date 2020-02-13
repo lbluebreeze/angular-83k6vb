@@ -13,7 +13,7 @@ import { InicioComponent } from "./inicio/inicio.component";
 import { HeaderComponent } from './header/header.component';
 import { ProveedoresComponent } from "./proveedores/proveedores.component";
 import { AddproveedorComponent } from './proveedores/addproveedor/addproveedor.component';
-import { AddpresupuestoComponent } from './proveedores/addpresupuesto/addpresupuesto.component';
+import { AddpresupuestoComponent } from './presupuestos/addpresupuesto/addpresupuesto.component';
 import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.component';
 
 const routes: Routes = [
