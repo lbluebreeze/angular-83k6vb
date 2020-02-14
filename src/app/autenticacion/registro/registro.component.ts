@@ -23,7 +23,7 @@ export class RegistroComponent implements OnInit {
     password: {
       required: 'La contraseña obligatoria',
       pattern: 'La contraseña debe tener al menos una letra y un número',
-      minlength: 'La contraseña debe tener más de 6 caracteres',
+      minlength: ', y más de 6 caracteres',
     }
   };
 
@@ -52,7 +52,7 @@ export class RegistroComponent implements OnInit {
       if (control && control.dirty && !control.valid) {
         const messages = this.mensajesValidacion[field];
         for (const key in control.errors) {
-          this.erroresForm[field] += '<li>' + messages[key] + '</li>';
+          this.erroresForm[field] += messages[key] + ' ';
         }
       }
     }

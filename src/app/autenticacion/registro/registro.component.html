@@ -7,7 +7,7 @@
       <ul *ngIf="erroresForm.email" class="alert alert-danger">{{ erroresForm.email }}</ul>
       <label for="password">Contraseña</label>
       <input type="password" id="inputPassword" class="form-control" formControlName="password" />
-      <ul *ngIf="erroresForm.password" class="alert alert-danger">{{ erroresForm.password | html}}</ul>
+      <ul *ngIf="erroresForm.password" class="alert alert-danger">{{ erroresForm.password }}</ul>
       <hr />
       <button [disabled]="!registroForm.valid" type="submit" class="btn btn-primary">Registrar</button>
     </form>

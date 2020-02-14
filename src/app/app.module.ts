@@ -18,7 +18,7 @@ import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.
 import { EditpresupuestoComponent } from './presupuestos/editpresupuesto/editpresupuesto.component';
 import { AutenticacionService } from './servicios/autenticacion.service';
 import { RegistroComponent } from './autenticacion/registro/registro.component';
-import { HtmlPipe } from './pipes/html.pipe';
+import { IniciarsesionComponent } from './autenticacion/iniciarsesion/iniciarsesion.component';
 
 const routes: Routes = [
   { path: "", component: InicioComponent },
@@ -28,12 +28,13 @@ const routes: Routes = [
   { path: "addpresupuesto", component: AddpresupuestoComponent },
   { path: "editpresupuesto/:id", component: EditpresupuestoComponent },
   { path: "registro", component: RegistroComponent },
+  { path: "iniciosesion", component: IniciarsesionComponent },
   { path: "**", component: InicioComponent },
 ];
 
 @NgModule({
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpModule],
-  declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent, PresupuestosComponent, EditpresupuestoComponent, RegistroComponent, HtmlPipe],
+  declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent, PresupuestosComponent, EditpresupuestoComponent, RegistroComponent, IniciarsesionComponent],
   bootstrap: [AppComponent],
   providers: [ProveedoresService, PresupuestosService, AutenticacionService]
 })
