@@ -7,7 +7,7 @@
       <label for="password">Contraseña</label>
       <input type="password" id="inputPassword" class="form-control" formControlName="password" />
       <hr />
-      <button type="button" class="btn btn-primary">Registrar</button>
+      <button *ngIf="registroForm.valid" type="submit" class="btn btn-primary">Registrar</button>
     </form>
   </div>
 </div>

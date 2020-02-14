@@ -17,10 +17,11 @@ export class RegistroComponent implements OnInit {
   ngOnInit() {
     this.registroForm = this.formBuilder.group({
       'email': ['', [Validators.required, Validators.email]],
-      'password': ['',
-        Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        Validators.minLength(6),
+      'password': ['', [
+          Validators.required,
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+          Validators.minLength(6),
+        ]
       ]
     });
     this.registroForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -30,6 +31,7 @@ export class RegistroComponent implements OnInit {
   onValueChanged(data?: any){ }
 
   onSubmit() {
+    console.log('submit');
     this.userdata = this.saveUserData();
     this.autenticacionService.registroUsuario(this.userdata);
     this.router.navigate(['/inicio']);
