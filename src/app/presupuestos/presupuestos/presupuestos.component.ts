@@ -8,9 +8,17 @@ import { PresupuestosService } from '../../servicios/presupuestos.service';
 })
 export class PresupuestosComponent implements OnInit {
 
-  presupuestos: any[] = [];
+  presupuestos: any[];
 
   constructor(private presupuestosService: PresupuestosService) {
+    this.getPresupuestos();
+  }
+
+  ngOnInit() {
+  }
+
+  getPresupuestos() {
+    this.presupuestos = [];
     this.presupuestosService.getPresupuestos().subscribe(presupuestos => {
       for (const id$ in presupuestos) {
         const p = presupuestos[id$];
@@ -20,7 +28,11 @@ export class PresupuestosComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  eliminarPresupuesto(id: string) {
+    this.presupuestosService.delPresupuesto(id).subscribe(response => {
+      console.log(response);
+      this.getPresupuestos();
+    });
   }
 
 }

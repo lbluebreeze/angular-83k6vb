@@ -40,4 +40,8 @@ export class PresupuestosService {
     });
   }
 
+  delPresupuesto(id$: string) {
+    return this.http.delete(`${this.presupuestosUrl}/${id$}.json`).map(response => response.json());
+  }
+
 }
