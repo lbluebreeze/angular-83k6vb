@@ -16,6 +16,8 @@ import { AddproveedorComponent } from './proveedores/addproveedor/addproveedor.c
 import { AddpresupuestoComponent } from './presupuestos/addpresupuesto/addpresupuesto.component';
 import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.component';
 import { EditpresupuestoComponent } from './presupuestos/editpresupuesto/editpresupuesto.component';
+import { AutenticacionService } from './servicios/autenticacion.service';
+import { RegistroComponent } from './autenticacion/registro/registro.component';
 
 const routes: Routes = [
   { path: "", component: InicioComponent },
@@ -24,13 +26,14 @@ const routes: Routes = [
   { path: "presupuestos", component: PresupuestosComponent },
   { path: "addpresupuesto", component: AddpresupuestoComponent },
   { path: "editpresupuesto/:id", component: EditpresupuestoComponent },
+  { path: "registro", component: RegistroComponent },
   { path: "**", component: InicioComponent },
 ];
 
 @NgModule({
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpModule],
-  declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent, PresupuestosComponent, EditpresupuestoComponent],
+  declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent, PresupuestosComponent, EditpresupuestoComponent, RegistroComponent],
   bootstrap: [AppComponent],
-  providers: [ProveedoresService, PresupuestosService]
+  providers: [ProveedoresService, PresupuestosService, AutenticacionService]
 })
 export class AppModule {}
