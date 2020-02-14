@@ -4,10 +4,12 @@
       <h4>Introduzca sus datos de registro</h4>
       <label for="email">Correo electrónico</label>
       <input type="email" id="inputEmail" class="form-control" formControlName="email" autofocus />
+      <ul *ngIf="erroresForm.email" class="alert alert-danger">{{ erroresForm.email }}</ul>
       <label for="password">Contraseña</label>
       <input type="password" id="inputPassword" class="form-control" formControlName="password" />
+      <ul *ngIf="erroresForm.password" class="alert alert-danger">{{ erroresForm.password | html}}</ul>
       <hr />
-      <button *ngIf="registroForm.valid" type="submit" class="btn btn-primary">Registrar</button>
+      <button [disabled]="!registroForm.valid" type="submit" class="btn btn-primary">Registrar</button>
     </form>
   </div>
 </div>

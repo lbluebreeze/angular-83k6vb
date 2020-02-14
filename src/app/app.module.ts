@@ -18,6 +18,7 @@ import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.
 import { EditpresupuestoComponent } from './presupuestos/editpresupuesto/editpresupuesto.component';
 import { AutenticacionService } from './servicios/autenticacion.service';
 import { RegistroComponent } from './autenticacion/registro/registro.component';
+import { HtmlPipe } from './pipes/html.pipe';
 
 const routes: Routes = [
   { path: "", component: InicioComponent },
@@ -32,7 +33,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpModule],
-  declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent, PresupuestosComponent, EditpresupuestoComponent, RegistroComponent],
+  declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent, PresupuestosComponent, EditpresupuestoComponent, RegistroComponent, HtmlPipe],
   bootstrap: [AppComponent],
   providers: [ProveedoresService, PresupuestosService, AutenticacionService]
 })
