@@ -27,4 +27,16 @@ export class AutenticacionService {
     ;
   }
 
+  isAuthenticated() {
+    const user = firebase.auth().currentUser;
+    if (!user) {
+      return false;
+    }
+    return true;
+  }
+
+  logout() {
+    firebase.auth().signOut();
+  }
+
 }

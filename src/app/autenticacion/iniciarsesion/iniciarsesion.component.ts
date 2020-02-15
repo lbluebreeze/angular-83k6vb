@@ -11,23 +11,55 @@ import { AutenticacionService } from '../../servicios/autenticacion.service';
 export class IniciarsesionComponent implements OnInit {
   loginForm: FormGroup;
   userdata: any;
+  erroresForm = {
+    email: '',
+    password: '',
+  };
+  mensajesValidacion = {
+    email: {
+      required: 'El correo electrónico es obligatorio',
+      email: 'Introduzca un correo electrónico válido',
+    },
+    password: {
+      required: 'La contraseña obligatoria',
+    }
+  };
+  mensaje = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute, private autenticacionService: AutenticacionService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [
-        Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        Validators.minLength(6),
-      ]]
+      password: ['', Validators.required]
     });
+    this.loginForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.onValueChanged();
+  }
+
+  onValueChanged(data?: any){
+    if (!this.loginForm) { return; }
+    const form = this.loginForm;
+    for (const field in this.erroresForm) {
+      this.erroresForm[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.mensajesValidacion[field];
+        for (const key in control.errors) {
+          this.erroresForm[field] += messages[key] + ' ';
+        }
+      }
+    }
   }
 
   onSubmit() {
     this.userdata = this.saveUserData();
     this.autenticacionService.inicioSesion(this.userdata);
+    setTimeout(() => {
+      if (!this.isAuth()) {
+        this.mensaje = true;
+      }
+    }, 2000);
   }
 
   saveUserData() {
@@ -36,6 +68,10 @@ export class IniciarsesionComponent implements OnInit {
       password: this.loginForm.get('password').value
     };
     return saveUserData;
+  }
+
+  isAuth() {
+    return this.autenticacionService.isAuthenticated();
   }
 
 }

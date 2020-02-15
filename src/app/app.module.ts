@@ -19,6 +19,7 @@ import { EditpresupuestoComponent } from './presupuestos/editpresupuesto/editpre
 import { AutenticacionService } from './servicios/autenticacion.service';
 import { RegistroComponent } from './autenticacion/registro/registro.component';
 import { IniciarsesionComponent } from './autenticacion/iniciarsesion/iniciarsesion.component';
+import { GuardService } from './servicios/guard.service';
 
 const routes: Routes = [
   { path: "", component: InicioComponent },
@@ -36,6 +37,6 @@ const routes: Routes = [
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpModule],
   declarations: [AppComponent, InicioComponent, ProveedoresComponent, HeaderComponent, AddproveedorComponent, AddpresupuestoComponent, PresupuestosComponent, EditpresupuestoComponent, RegistroComponent, IniciarsesionComponent],
   bootstrap: [AppComponent],
-  providers: [ProveedoresService, PresupuestosService, AutenticacionService]
+  providers: [ProveedoresService, PresupuestosService, AutenticacionService, GuardService]
 })
 export class AppModule {}
