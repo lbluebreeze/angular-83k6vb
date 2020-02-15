@@ -19,15 +19,15 @@ import { EditpresupuestoComponent } from './presupuestos/editpresupuesto/editpre
 import { AutenticacionService } from './servicios/autenticacion.service';
 import { RegistroComponent } from './autenticacion/registro/registro.component';
 import { IniciarsesionComponent } from './autenticacion/iniciarsesion/iniciarsesion.component';
-import { GuardService } from './servicios/guard.service';
+import { GuardService } from './servicios/iniciosesion/guard.service';
 
 const routes: Routes = [
   { path: "", component: InicioComponent },
-  { path: "proveedores", component: ProveedoresComponent },
-  { path: "addproveedor", component: AddproveedorComponent },
-  { path: "presupuestos", component: PresupuestosComponent },
-  { path: "addpresupuesto", component: AddpresupuestoComponent },
-  { path: "editpresupuesto/:id", component: EditpresupuestoComponent },
+  { path: "proveedores", component: ProveedoresComponent, canActivate: [GuardService] },
+  { path: "addproveedor", component: AddproveedorComponent, canActivate: [GuardService] },
+  { path: "presupuestos", component: PresupuestosComponent, canActivate: [GuardService] },
+  { path: "addpresupuesto", component: AddpresupuestoComponent, canActivate: [GuardService] },
+  { path: "editpresupuesto/:id", component: EditpresupuestoComponent, canActivate: [GuardService] },
   { path: "registro", component: RegistroComponent },
   { path: "iniciosesion", component: IniciarsesionComponent },
   { path: "**", component: InicioComponent },
